@@ -1,0 +1,302 @@
+/**
+ * Lang
+ * @constructor
+ * @param {String} language
+ */
+var Lang = function (language) {
+    if (language === undefined) {
+        return { invalid: true, reason: "language is not defined" };
+    } else {
+        this.language = language;
+    }
+
+    //: Français, Anglais, Espagnol, Polonais, Slovaque, Roumain
+    this.langKeys = {
+        'fr': {
+            'monthNames': ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+            'no_results': 'Aucun résultat pour cette recherche',
+            'search_results': 'Idées similaires',
+            'tile_configuration': 'Configuration de la tuile',
+            'form_title_label': 'Titre de la tuile',
+            'form_title_input': 'Tuile des idées',
+            'form_search_mode_label':'Type de recherche',
+            'form_search_mode_label_category': 'Catégories',
+            'form_search_mode_type_1':'Recherche et soumission',
+            'form_search_mode_type_2':'Recherche par catégorie',
+            'form_optional_field_email': 'Type email',
+            'form_optional_fields_label': 'Champs optionels',
+            'form_optional_fields_addbtn': 'Ajouter un champ',
+            'form_optional_field_input': 'Champ texte',
+            'form_optional_field_select': 'Liste déroulante',
+            'form_optional_fields_number': 'Champ téléphone',
+            'form_option_field_addoption': 'Ajouter une option',
+            'form_option_field_required': 'Champ obligatoire ?',
+            'form_optional_field_select_label': 'Champ liste',
+            'form_optional_field_input_label': 'Champ',
+            'form_optional_field_input_placeholder': 'Titre du champ',
+            'form_cancel_btn': 'Annuler',
+            'form_save_btn': 'Enregistrer les propriétés',
+            'form_create_tags': 'Ajouter des mots clés',
+            'form_idea_content': 'Description de votre idée',
+            'search_for_ideas': 'Exemple : Livebox...',
+            'search_for_ideas_label': 'Recherche dans les idées du mur',
+            'search_for_ideas_category_label': 'Voir les idées par catégorie',
+            'browse_more_ideas': 'Voir plus d’idées similaires',
+            'check_ideas': "Saisissez l'intitulé de votre idée",
+            'submit_an_idea': 'Soumettre votre idée',
+            'form_attachment': 'Je souhaite ajouter une pièce jointe (image ou fichier)',
+            'form_attachment_info_header': 'Afin d’ajouter votre pièce jointe, après soumission de l’idée :',
+            'form_attachment_info_1': ' - Cliquez sur Joindre (en bas à droite)',
+            'form_attachment_info_2': ' - Uns fois vos fichiers ajoutés, cliquez sur Publier',
+            'confirmation': 'confirmation',
+            'idea_created': 'Votre idée a bien été créée',
+            'idea_title_placeholder': 'Donnez un nom à votre idée',
+            'label_add_option': 'Ajoutez une option',
+            'label_add_category': 'Ajoutez une catégorie',
+            'description_title': 'J\'aimerais',
+            'title_label': 'Titre',
+            'save_form': 'Enregistrer',
+            'modal_close_btn': 'Fermer',
+            'form_option_field_category': 'Marquer ce champ comme catégorie',
+            'tile_file_place_id_label': 'Id de la communauté cible',
+            'tile_url_label' : 'Url de la communauté cible où sont postés les idées (non encodé)',
+            'form_input_text_placeholder' : 'Libellé intérieur du champ',
+            'view_ideas_search' : 'Rechercher les idées du mur',
+            'view_ideas_filter': 'Sélectionner une catégorie'
+
+        },
+        'en': {
+            'monthNames': ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            'no_results': 'No results for these fields',
+            'search_results': 'Similar ideas',
+            'tile_configuration': 'Configuration of the tile',
+            'form_title_label': 'Title of the tile',
+            'form_title_input': 'Idea tile',
+            'form_search_mode_label':'Search type',
+            'form_search_mode_label_category': 'Categories',
+            'form_search_mode_type_1':'Search and submit',
+            'form_search_mode_type_2':'Search by category',
+            'form_optional_field_email': 'Email type',
+            'form_optional_fields_label': 'Optional fields',
+            'form_optional_fields_addbtn': 'Add a field',
+            'form_optional_field_input': 'Text field',
+            'form_optional_field_select': 'List field',
+            'form_optional_fields_number': 'Number field',
+            'form_option_field_addoption': 'Add an option',
+            'form_option_field_required': 'Required field ?',
+            'form_optional_field_select_label': 'Select field',
+            'form_optional_field_input_label': 'Field',
+            'form_optional_field_input_placeholder': 'Title of the field',
+            'form_cancel_btn': 'Cancel',
+            'form_save_btn': 'Save the properties',
+            'form_create_tags': 'Add key words',
+            'form_idea_content': 'Description of your idea',
+            'search_for_ideas': 'Example : Livebox...',
+            'search_for_ideas_label': 'Search for an idea on the wall',
+            'search_for_ideas_category_label': 'Browse for ideas by category',
+            'browse_more_ideas': 'Check more similar ideas',
+            'check_ideas': "Enter a title for your idea",
+            'submit_an_idea': 'Submit your idea',
+            'form_attachment': 'I wish to add an attachment (image or file)',
+            'form_attachment_info_header': 'In order to add your attachment, after submitting your idea : ',
+            'form_attachment_info_1': '- Click on "Join" on the right down corner',
+            'form_attachment_info_2': '- Once your files added, click on Publish',
+            'confirmation': 'Confirmation',
+            'idea_created': 'Your idea has been created',
+            'idea_title_placeholder': 'Name of your idea',
+            'label_add_option': 'Add an option',
+            'label_add_category': 'Add a category',
+            'description_title': 'I\'d like',
+            'title_label': 'Title',
+            'save_form': 'Save',
+            'modal_close_btn': 'Close',
+            'form_option_field_category': 'Mark this field as category',
+            'tile_url_label': 'Community url where ideas are posted',
+            'tile_file_place_id_label' : 'Target community id',
+            'form_input_text_placeholder' : 'Label inside the field',
+            'view_ideas_search': 'Search ideas of the wall',
+            'view_ideas_filter': 'Select a category'
+        },
+        'es': {
+            'monthNames': ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            'no_results': 'No results for these fields',
+            'search_results': 'Ideas similares',
+            'tile_configuration': 'Configuration of the tile',
+            'form_title_label': 'Título',
+            'form_title_input': 'Título',
+            'form_optional_field_email': 'Email type',
+            'form_optional_fields_label': 'Optional fields',
+            'form_optional_fields_addbtn': 'Add a field',
+            'form_optional_field_input': 'Text field',
+            'form_optional_field_select': 'List field',
+            'form_optional_fields_number': 'Number field',
+            'form_option_field_addoption': 'Add an option',
+            'form_option_field_required': 'Required field ?',
+            'form_optional_field_select_label': 'Select field',
+            'form_optional_field_input_label': 'Field',
+            'form_optional_field_input_placeholder': 'Insert the name of the field',
+            'form_cancel_btn': 'Cancelar',
+            'form_save_btn': 'Envía tu idea',
+            'form_create_tags': 'Add key words',
+            'form_idea_content': 'Description of your idea',
+            'search_for_ideas': 'Introduce el título de la idea',
+            'browse_more_ideas': 'Mas ideas similares',
+            'submit_an_idea': 'Envía tu idea',
+            'form_attachment': 'I wish to add an attachment (image or file)',
+            'form_attachment_info_header': 'In order to add your attachment, after submitting your idea : ',
+            'form_attachment_info_1': '- Click on "Join" on the right down corner',
+            'form_attachment_info_2': '- Once your files added, click on Publish',
+            'confirmation': 'Confirmation',
+            'idea_created': 'Your idea has been created',
+            'idea_title_placeholder': 'Name of your idea',
+            'label_add_option': 'Add an option',
+            'description_title': 'I\'d like',
+            'title_label': 'Title',
+            'save_form': 'Save the form',
+            'modal_close_btn': 'Cerrar'
+        },
+        'pl': {
+            'monthNames': ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            'no_results': 'No results for these fields',
+            'search_results': 'Podobne idee',
+            'tile_configuration': 'Configuration of the tile',
+            'form_title_label': 'Title of the tile',
+            'form_title_input': 'Idea tile',
+            'form_optional_field_email': 'Email type',
+            'form_optional_fields_label': 'Optional fields',
+            'form_optional_fields_addbtn': 'Add a field',
+            'form_optional_field_input': 'Text field',
+            'form_optional_field_select': 'List field',
+            'form_optional_fields_number': 'Number field',
+            'form_option_field_addoption': 'Add an option',
+            'form_option_field_required': 'Required field ?',
+            'form_optional_field_select_label': 'Select field',
+            'form_optional_field_input_label': 'Field',
+            'form_optional_field_input_placeholder': 'Insert the name of the field',
+            'form_cancel_btn': 'Cancel',
+            'form_save_btn': 'Save the properties',
+            'form_create_tags': 'Add key words',
+            'form_idea_content': 'Description of your idea',
+            'search_for_ideas': 'Enter the name of an idea',
+            'browse_more_ideas': 'Więcej podobnych pomysłów',
+            'submit_an_idea': 'Submit your idea',
+            'form_attachment': 'I wish to add an attachment (image or file)',
+            'form_attachment_info_header': 'In order to add your attachment, after submitting your idea : ',
+            'form_attachment_info_1': '- Click on "Join" on the right down corner',
+            'form_attachment_info_2': '- Once your files added, click on Publish',
+            'confirmation': 'Confirmation',
+            'idea_created': 'Your idea has been created',
+            'idea_title_placeholder': 'Name of your idea',
+            'label_add_option': 'Add an option',
+            'description_title': 'I\'d like',
+            'title_label': 'Title',
+            'save_form': 'Save the form',
+            'modal_close_btn': 'Close'
+        },
+        'sk': {
+            'monthNames': ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            'no_results': 'No results for these fields',
+            'search_results': 'Podobné nápady',
+            'tile_configuration': 'Configuration of the tile',
+            'form_title_label': 'Title of the tile',
+            'form_title_input': 'Zadať názov nápadu',
+            'form_optional_field_email': 'Email type',
+            'form_optional_fields_label': 'Optional fields',
+            'form_optional_fields_addbtn': 'Add a field',
+            'form_optional_field_input': 'Text field',
+            'form_optional_field_select': 'List field',
+            'form_optional_fields_number': 'Number field',
+            'form_option_field_addoption': 'Add an option',
+            'form_option_field_required': 'Required field ?',
+            'form_optional_field_select_label': 'Select field',
+            'form_optional_field_input_label': 'Field',
+            'form_optional_field_input_placeholder': 'Insert the name of the field',
+            'form_cancel_btn': 'Zrušiť',
+            'form_save_btn': 'Save the properties',
+            'form_create_tags': 'Add key words',
+            'form_idea_content': 'Description of your idea',
+            'search_for_ideas': 'Enter the name of an idea',
+            'browse_more_ideas': 'Ďalšie podobné nápady',
+            'submit_an_idea': 'Pridaj svoj nápad',
+            'form_attachment': 'I wish to add an attachment (image or file)',
+            'form_attachment_info_header': 'In order to add your attachment, after submitting your idea : ',
+            'form_attachment_info_1': '- Click on "Join" on the right down corner',
+            'form_attachment_info_2': '- Once your files added, click on Publish',
+            'confirmation': 'Confirmation',
+            'idea_created': 'Your idea has been created',
+            'idea_title_placeholder': 'Name of your idea',
+            'label_add_option': 'Add an option',
+            'description_title': 'I\'d like',
+            'title_label': 'Názov',
+            'save_form': 'Save the form',
+            'modal_close_btn': 'Zatvoriť'
+        },
+        'ro': {
+            'monthNames': ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            'no_results': 'No results for these fields',
+            'search_results': 'Idei similare',
+            'tile_configuration': 'Configuration of the tile',
+            'form_title_label': 'Title of the tile',
+            'form_title_input': 'Scrie numele ideii',
+            'form_optional_field_email': 'Email type',
+            'form_optional_fields_label': 'Optional fields',
+            'form_optional_fields_addbtn': 'Add a field',
+            'form_optional_field_input': 'Text field',
+            'form_optional_field_select': 'List field',
+            'form_optional_fields_number': 'Number field',
+            'form_option_field_addoption': 'Add an option',
+            'form_option_field_required': 'Required field ?',
+            'form_optional_field_select_label': 'Select field',
+            'form_optional_field_input_label': 'Field',
+            'form_optional_field_input_placeholder': 'Insert the name of the field',
+            'form_cancel_btn': 'Anuleaza',
+            'form_save_btn': 'Save the properties',
+            'form_create_tags': 'Add key words',
+            'form_idea_content': 'Description of your idea',
+            'search_for_ideas': 'Enter the name of an idea',
+            'browse_more_ideas': 'Mai multe idei similare',
+            'submit_an_idea': 'Propune ideea ta',
+            'form_attachment': 'I wish to add an attachment (image or file)',
+            'form_attachment_info_header': 'In order to add your attachment, after submitting your idea : ',
+            'form_attachment_info_1': '- Click on "Join" on the right down corner',
+            'form_attachment_info_2': '- Once your files added, click on Publish',
+            'confirmation': 'Confirmation',
+            'idea_created': 'Your idea has been created',
+            'idea_title_placeholder': 'Name of your idea',
+            'label_add_option': 'Add an option',
+            'description_title': 'I\'d like',
+            'title_label': 'Titlu',
+            'save_form': 'Save the form',
+            'modal_close_btn': 'Inchide'
+        }
+    };
+
+};
+
+/**
+ * getKey
+ * @method
+ * @param {String} key
+ * @returns {String} translated key
+ */
+Lang.prototype.getKey = function (key) {
+
+
+    if (key === undefined) throw new Error("Key ", key, "is not defined");
+
+    var wording;
+    if (this.langKeys[this.language] === undefined) {
+        wording = undefined;
+    } else {
+        wording = this.langKeys[this.language][key];
+    }
+
+    if (wording === undefined) {
+        //console.info("Lang not defined for key ", key, " lang : ", this.language);
+
+        wording = this.langKeys['en'][key]; //set english by default
+    }
+
+    return wording;
+
+};
